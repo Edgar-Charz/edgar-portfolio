@@ -384,7 +384,17 @@
           <span class="brand-mark">E<span>.</span></span>
           <span>Edgar Charles</span>
         </a>
-        <nav class="nav resume-nav" aria-label="Main navigation">
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span></span><span></span>
+        </button>
+        <nav class="nav resume-nav" id="nav" aria-label="Main navigation">
           <a class="nav-link" href="index.html#home">Home</a>
           <a class="nav-link" href="index.html#about">About</a>
           <a class="nav-link" href="index.html#skills">Skills</a>
@@ -611,6 +621,24 @@
       setTheme(root.dataset.theme || "dark");
       button.addEventListener("click", () =>
         setTheme(root.dataset.theme === "dark" ? "light" : "dark"),
+      );
+      const menuToggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("nav");
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Open navigation" : "Close navigation",
+        );
+        nav.classList.toggle("open", !isOpen);
+      });
+      nav.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation");
+          nav.classList.remove("open");
+        }),
       );
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
