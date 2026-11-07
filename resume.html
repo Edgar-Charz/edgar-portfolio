@@ -26,22 +26,45 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 20px;
-        margin-bottom: 22px;
+        gap: 28px;
+        margin-bottom: 26px;
       }
+      .resume-toolbar-copy{min-width:0}
       .resume-toolbar h2 {
+        max-width:620px;
         margin: 0;
-        font: 600 25px "Space Grotesk", sans-serif;
+        font: 600 clamp(32px, 5vw, 48px)/1.08 "Space Grotesk", sans-serif;
+        letter-spacing:-1.6px;
       }
       .resume-toolbar p:last-child {
-        margin: 5px 0 0;
+        margin: 8px 0 0;
         color: var(--muted);
-        font-size: 12px;
+        font-size: 14px;
+      }
+      .resume-actions{
+        display:flex;
+        flex:0 0 auto;
+        gap:10px;
+      }
+      .resume-actions .button{
+        min-height:48px;
+        justify-content:space-between;
+        gap:22px;
+        border-radius:0;
+        white-space:nowrap;
+      }
+      .resume-actions .button-outline{
+        border:1px solid var(--line);
+        color:var(--text);
+      }
+      .resume-actions .button-outline:hover{
+        border-color:var(--blue);
+        background:var(--surface2);
       }
       .resume-paper {
         overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 20px;
+        border-radius: 0;
         background: var(--surface);
         box-shadow: var(--shadow);
       }
@@ -84,7 +107,7 @@
         aspect-ratio: 4/5;
         overflow: hidden;
         border: 3px solid var(--surface);
-        border-radius: 18px;
+        border-radius: 0;
         outline: 1px solid rgba(79, 140, 255, 0.45);
         background: var(--surface2);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
@@ -124,7 +147,7 @@
       .resume-section h2::before {
         width: 4px;
         height: 17px;
-        border-radius: 4px;
+        border-radius: 0;
         background: var(--blue);
         content: "";
       }
@@ -185,18 +208,7 @@
         line-height: 1.8;
       }
       .resume-soft-skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-      .resume-soft-skills span {
-        padding: 6px 8px;
-        border: 1px solid var(--line);
-        border-radius: 7px;
-        background: var(--surface2);
-        color: var(--muted);
-        font-size: 9px;
-        line-height: 1.3;
+        gap: 4px !important;
       }
       .resume-language {
         display: flex;
@@ -208,37 +220,6 @@
       }
       .resume-language span:last-child {
         color: var(--muted);
-      }
-      .resume-project {
-        padding: 14px 15px;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: var(--surface2);
-      }
-      .resume-project h3 {
-        margin: 0 0 4px;
-        font: 600 12px "Space Grotesk", sans-serif;
-      }
-      .resume-project-label {
-        margin: 0 0 8px !important;
-        color: var(--blue2) !important;
-        font-size: 9px !important;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-      }
-      .resume-project-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 10px;
-      }
-      .resume-project-tech span {
-        padding: 3px 7px;
-        border: 1px solid var(--line);
-        border-radius: 5px;
-        color: var(--muted);
-        font-size: 9px;
       }
       .resume-footer-note {
         padding: 13px 42px;
@@ -253,6 +234,14 @@
         .resume-toolbar {
           align-items: flex-start;
           flex-direction: column;
+          gap:16px;
+        }
+        .resume-actions{
+          width:100%;
+          flex-wrap:wrap;
+        }
+        .resume-actions .button{
+          flex:1 1 190px;
         }
         .resume-header {
           grid-template-columns: minmax(0, 1fr) 100px;
@@ -261,7 +250,7 @@
         }
         .resume-photo-wrap {
           width: 96px;
-          border-radius: 14px;
+          border-radius: 0;
         }
         .resume-body {
           grid-template-columns: 1fr;
@@ -281,6 +270,9 @@
         }
       }
       @media (max-width: 480px) {
+        .resume-toolbar h2{font-size:34px}
+        .resume-toolbar p:last-child{font-size:13px}
+        .resume-actions .button{flex-basis:100%}
         .resume-header {
           grid-template-columns: minmax(0, 1fr) 78px;
           padding: 22px 18px;
@@ -319,7 +311,7 @@
       }
       @page {
         size: A4;
-        margin: 14mm;
+        margin: 0;
       }
       @media print {
         :root {
@@ -331,11 +323,19 @@
           --blue: #2867c7;
           --blue2: #2867c7;
         }
+        html {
+          background: #fff !important;
+          color-scheme: light;
+        }
         body {
+          margin: 0;
           background: #fff !important;
           color: #172033 !important;
           print-color-adjust: exact;
           -webkit-print-color-adjust: exact;
+        }
+        .site-shell {
+          background: #fff !important;
         }
         .topbar,
         .resume-toolbar,
@@ -344,12 +344,16 @@
         }
         .site-shell {
           max-width: none;
+          width: 100%;
           padding: 0;
+          background: #fff !important;
         }
         .resume-page {
+          width: 100%;
           max-width: none;
           margin: 0;
-          padding: 0;
+          padding: 10mm;
+          box-sizing: border-box;
         }
         .resume-paper {
           overflow: visible;
@@ -358,21 +362,33 @@
           box-shadow: none;
         }
         .resume-header {
-          padding: 0 0 18px;
+          grid-template-columns: minmax(0, 1fr) 120px;
+          gap: 20px;
+          padding: 0 0 14px;
         }
         .resume-body {
-          gap: 24px;
-          padding: 22px 0;
+          grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
+          gap: 20px;
+          padding: 16px 0;
         }
         .resume-section {
-          margin-bottom: 20px;
+          margin-bottom: 14px;
         }
         .resume-section p,
         .resume-section li {
           font-size: 9.5pt;
         }
+        .resume-entry {
+          margin-bottom: 12px;
+        }
+        .resume-entry ul {
+          gap: 3px;
+        }
+        .resume-soft-skills {
+          gap: 3px !important;
+        }
         .resume-footer-note {
-          padding: 10px 0 0;
+          padding: 7px 0 0;
         }
       }
     </style>
@@ -413,18 +429,19 @@
 
       <main class="resume-page">
         <div class="resume-toolbar">
-          <div>
+          <div class="resume-toolbar-copy">
             <p class="section-kicker">RESUME / CV</p>
-            <h2>Edgar Charles</h2>
-            <p>Computer Science graduate · Software Developer</p>
+            <h2>Learning, building, and solving real problems.</h2>
+            <p>A concise look at my software development experience, education, and skills.</p>
           </div>
-          <button
-            class="button button-primary"
-            type="button"
-            onclick="window.print()"
-          >
-            Print / Save as PDF <span>↗</span>
-          </button>
+          <div class="resume-actions">
+            <a class="button button-outline" href="assets/Edgar-Charles-CV.pdf" download="Edgar-Charles-CV.pdf">
+              Download CV <span>↓</span>
+            </a>
+            <button class="button button-primary" type="button" onclick="window.print()">
+              Print / Save as PDF <span>↗</span>
+            </button>
+          </div>
         </div>
 
         <article class="resume-paper">
@@ -497,21 +514,6 @@
               </section>
 
               <section class="resume-section">
-                <h2>Selected Project</h2>
-                <div class="resume-project">
-                  <h3>UDSM Complaints Management System</h3>
-                  <p class="resume-project-label">Final-year project</p>
-                  <p>
-                    A web-based system for submitting, managing, and tracking
-                    student complaints.
-                  </p>
-                  <div class="resume-project-tech" aria-label="Technologies">
-                    <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="resume-section">
                 <h2>Education</h2>
                 <div class="resume-entry">
                   <div class="resume-entry-head">
@@ -566,14 +568,14 @@
 
               <section class="resume-section">
                 <h2>Professional Skills</h2>
-                <div class="resume-soft-skills">
-                  <span>Problem-solving</span>
-                  <span>Time management</span>
-                  <span>Analytical thinking</span>
-                  <span>Communication</span>
-                  <span>Team collaboration</span>
-                  <span>Adaptability</span>
-                </div>
+                <ul class="resume-soft-skills">
+                  <li>Problem-solving</li>
+                  <li>Time management</li>
+                  <li>Analytical thinking</li>
+                  <li>Communication</li>
+                  <li>Team collaboration</li>
+                  <li>Adaptability</li>
+                </ul>
               </section>
 
               <section class="resume-section">
