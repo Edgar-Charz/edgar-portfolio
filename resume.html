@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Resume of Edgar Charles, Computer Science graduate and software developer."
+    />
+    <title>Resume | Edgar Charles</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("portfolio-theme") || "dark";
+      } catch (error) {}
+    </script>
+    <style>
+      .resume-page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 38px 0 56px;
+      }
+      .resume-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 22px;
+      }
+      .resume-toolbar h2 {
+        margin: 0;
+        font: 600 25px "Space Grotesk", sans-serif;
+      }
+      .resume-toolbar p:last-child {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .resume-paper {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+      .resume-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 150px;
+        align-items: center;
+        gap: 30px;
+        padding: 38px 42px;
+        background: linear-gradient(120deg, var(--surface2), var(--surface));
+        border-bottom: 1px solid var(--line);
+      }
+      .resume-name {
+        margin: 0;
+        font: 700 clamp(32px, 5vw, 46px)/1.05 "Space Grotesk", sans-serif;
+        letter-spacing: -1.8px;
+      }
+      .resume-title {
+        margin: 9px 0 20px;
+        color: var(--blue2);
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .resume-contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px 18px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .resume-contact a:hover {
+        color: var(--blue2);
+      }
+      .resume-photo-wrap {
+        justify-self: end;
+        width: 138px;
+        aspect-ratio: 4/5;
+        overflow: hidden;
+        border: 3px solid var(--surface);
+        border-radius: 18px;
+        outline: 1px solid rgba(79, 140, 255, 0.45);
+        background: var(--surface2);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      }
+      .resume-photo {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center 35%;
+      }
+      .resume-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(230px, 0.65fr);
+        gap: 36px;
+        padding: 34px 42px 40px;
+      }
+      .resume-main,
+      .resume-sidebar {
+        min-width: 0;
+      }
+      .resume-section {
+        margin: 0 0 27px;
+        break-inside: avoid;
+      }
+      .resume-section:last-child {
+        margin-bottom: 0;
+      }
+      .resume-section h2 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 13px;
+        font: 600 15px "Space Grotesk", sans-serif;
+        letter-spacing: -0.2px;
+      }
+      .resume-section h2::before {
+        width: 4px;
+        height: 17px;
+        border-radius: 4px;
+        background: var(--blue);
+        content: "";
+      }
+      .resume-section p,
+      .resume-section li {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.8;
+      }
+      .resume-section p {
+        margin: 0;
+      }
+      .resume-section ul {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding-left: 17px;
+      }
+      .resume-entry {
+        margin: 0 0 17px;
+        break-inside: avoid;
+      }
+      .resume-entry:last-child {
+        margin-bottom: 0;
+      }
+      .resume-entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .resume-entry-head strong {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .resume-entry-head time,
+      .resume-entry-subtitle {
+        color: var(--muted);
+        font-size: 10px;
+      }
+      .resume-entry-subtitle {
+        margin: 3px 0 6px !important;
+      }
+      .resume-entry ul {
+        margin-top: 5px;
+      }
+      .resume-skills {
+        display: grid;
+        gap: 12px;
+      }
+      .resume-skill-group strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 11px;
+      }
+      .resume-skill-group p {
+        font-size: 10px;
+        line-height: 1.8;
+      }
+      .resume-soft-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .resume-soft-skills span {
+        padding: 6px 8px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--surface2);
+        color: var(--muted);
+        font-size: 9px;
+        line-height: 1.3;
+      }
+      .resume-language {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+      }
+      .resume-language span:last-child {
+        color: var(--muted);
+      }
+      .resume-project {
+        padding: 14px 15px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface2);
+      }
+      .resume-project h3 {
+        margin: 0 0 4px;
+        font: 600 12px "Space Grotesk", sans-serif;
+      }
+      .resume-project-label {
+        margin: 0 0 8px !important;
+        color: var(--blue2) !important;
+        font-size: 9px !important;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .resume-project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .resume-project-tech span {
+        padding: 3px 7px;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: var(--muted);
+        font-size: 9px;
+      }
+      .resume-footer-note {
+        padding: 13px 42px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 9px;
+      }
+      @media (max-width: 720px) {
+        .resume-page {
+          padding: 25px 0 38px;
+        }
+        .resume-toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .resume-header {
+          grid-template-columns: minmax(0, 1fr) 100px;
+          gap: 15px;
+          padding: 26px 24px;
+        }
+        .resume-photo-wrap {
+          width: 96px;
+          border-radius: 14px;
+        }
+        .resume-body {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding: 26px 24px 30px;
+        }
+        .resume-sidebar {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 22px;
+        }
+        .resume-sidebar .resume-section {
+          margin: 0;
+        }
+        .resume-footer-note {
+          padding: 12px 24px;
+        }
+      }
+      @media (max-width: 480px) {
+        .resume-header {
+          grid-template-columns: minmax(0, 1fr) 78px;
+          padding: 22px 18px;
+        }
+        .resume-name {
+          font-size: 30px;
+        }
+        .resume-title {
+          margin: 7px 0 15px;
+          font-size: 13px;
+        }
+        .resume-contact {
+          display: grid;
+          gap: 7px;
+          font-size: 10px;
+        }
+        .resume-photo-wrap {
+          width: 76px;
+          border-radius: 12px;
+        }
+        .resume-body {
+          padding: 23px 18px 26px;
+        }
+        .resume-sidebar {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .resume-entry-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .resume-footer-note {
+          padding: 12px 18px;
+        }
+      }
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+      @media print {
+        :root {
+          --text: #172033;
+          --muted: #4b5565;
+          --surface: #fff;
+          --surface2: #f3f6fa;
+          --line: #dce2ea;
+          --blue: #2867c7;
+          --blue2: #2867c7;
+        }
+        body {
+          background: #fff !important;
+          color: #172033 !important;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+        .topbar,
+        .resume-toolbar,
+        .footer {
+          display: none !important;
+        }
+        .site-shell {
+          max-width: none;
+          padding: 0;
+        }
+        .resume-page {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+        .resume-paper {
+          overflow: visible;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .resume-header {
+          padding: 0 0 18px;
+        }
+        .resume-body {
+          gap: 24px;
+          padding: 22px 0;
+        }
+        .resume-section {
+          margin-bottom: 20px;
+        }
+        .resume-section p,
+        .resume-section li {
+          font-size: 9.5pt;
+        }
+        .resume-footer-note {
+          padding: 10px 0 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html#home">
+          <span class="brand-mark">E<span>.</span></span>
+          <span>Edgar Charles</span>
+        </a>
+        <nav class="nav resume-nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html#home">Home</a>
+          <a class="nav-link" href="index.html#about">About</a>
+          <a class="nav-link" href="index.html#skills">Skills</a>
+          <a class="nav-link" href="index.html#projects">Projects</a>
+          <a class="nav-link active" href="resume.html">Resume</a>
+          <a class="nav-link" href="index.html#contact">Contact</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Switch color theme"
+        >
+          <span id="themeIcon">☼</span>
+        </button>
+      </header>
+
+      <main class="resume-page">
+        <div class="resume-toolbar">
+          <div>
+            <p class="section-kicker">RESUME / CV</p>
+            <h2>Edgar Charles</h2>
+            <p>Computer Science graduate · Software Developer</p>
+          </div>
+          <button
+            class="button button-primary"
+            type="button"
+            onclick="window.print()"
+          >
+            Print / Save as PDF <span>↗</span>
+          </button>
+        </div>
+
+        <article class="resume-paper">
+          <header class="resume-header">
+            <div>
+              <h1 class="resume-name">Edgar Charles</h1>
+              <p class="resume-title">Software Developer</p>
+              <ul class="resume-contact" aria-label="Contact details">
+                <li>Dar es Salaam, Tanzania</li>
+                <li><a href="tel:+255679799406">+255 679 799 406</a></li>
+                <li>
+                  <a href="mailto:edgarcharles360@gmail.com"
+                    >edgarcharles360@gmail.com</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Edgar-Charz"
+                    target="_blank"
+                    rel="noreferrer"
+                    >github.com/Edgar-Charz</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/edgar-charles-a3529737b"
+                    target="_blank"
+                    rel="noreferrer"
+                    >LinkedIn profile</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="resume-photo-wrap">
+              <img
+                class="resume-photo"
+                src="assets/images/profile.JPG"
+                alt="Portrait of Edgar Charles"
+              />
+            </div>
+          </header>
+
+          <div class="resume-body">
+            <div class="resume-main">
+              <section class="resume-section">
+                <h2>Professional Summary</h2>
+                <p>
+                  Computer Science graduate from the University of Dar es
+                  Salaam with practical training in software development.
+                  Interested in building reliable web and mobile applications,
+                  developing systems, and debugging software. Brings a
+                  project-based foundation in PHP, MySQL, Bootstrap, Python,
+                  Django, and Flutter.
+                </p>
+              </section>
+
+              <section class="resume-section">
+                <h2>Experience</h2>
+                <div class="resume-entry">
+                  <div class="resume-entry-head">
+                    <strong>Software Developer Trainee</strong>
+                    <time>2024–2025 · Approximate dates</time>
+                  </div>
+                  <p class="resume-entry-subtitle">Sonak Co. Ltd · Dar es Salaam, Tanzania</p>
+                  <ul>
+                    <li>Contributed to developing software systems during practical training.</li>
+                    <li>Assisted with debugging and resolving software issues.</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section class="resume-section">
+                <h2>Selected Project</h2>
+                <div class="resume-project">
+                  <h3>UDSM Complaints Management System</h3>
+                  <p class="resume-project-label">Final-year project</p>
+                  <p>
+                    A web-based system for submitting, managing, and tracking
+                    student complaints.
+                  </p>
+                  <div class="resume-project-tech" aria-label="Technologies">
+                    <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="resume-section">
+                <h2>Education</h2>
+                <div class="resume-entry">
+                  <div class="resume-entry-head">
+                    <strong>Bachelor of Science in Computer Science</strong>
+                    <time>2023–2026</time>
+                  </div>
+                  <p class="resume-entry-subtitle">University of Dar es Salaam (UDSM)</p>
+                </div>
+                <div class="resume-entry">
+                  <div class="resume-entry-head">
+                    <strong>Advanced Secondary Education</strong>
+                    <time>2021–2023</time>
+                  </div>
+                  <p class="resume-entry-subtitle">Kilangalanga Secondary School</p>
+                </div>
+                <div class="resume-entry">
+                  <div class="resume-entry-head">
+                    <strong>Ordinary Secondary Education</strong>
+                    <time>2017–2020</time>
+                  </div>
+                  <p class="resume-entry-subtitle">Azania Secondary School</p>
+                </div>
+              </section>
+            </div>
+
+            <aside class="resume-sidebar">
+              <section class="resume-section">
+                <h2>Technical Skills</h2>
+                <div class="resume-skills">
+                  <div class="resume-skill-group">
+                    <strong>Frontend</strong>
+                    <p>HTML, CSS, JavaScript, Bootstrap</p>
+                  </div>
+                  <div class="resume-skill-group">
+                    <strong>Backend</strong>
+                    <p>PHP, Python, Django, Object-oriented programming</p>
+                  </div>
+                  <div class="resume-skill-group">
+                    <strong>Mobile</strong>
+                    <p>Flutter, Dart</p>
+                  </div>
+                  <div class="resume-skill-group">
+                    <strong>Databases</strong>
+                    <p>MySQL, MariaDB, Firebase</p>
+                  </div>
+                  <div class="resume-skill-group">
+                    <strong>Tools</strong>
+                    <p>Git, GitHub, VS Code</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="resume-section">
+                <h2>Professional Skills</h2>
+                <div class="resume-soft-skills">
+                  <span>Problem-solving</span>
+                  <span>Time management</span>
+                  <span>Analytical thinking</span>
+                  <span>Communication</span>
+                  <span>Team collaboration</span>
+                  <span>Adaptability</span>
+                </div>
+              </section>
+
+              <section class="resume-section">
+                <h2>Languages</h2>
+                <div class="resume-language">
+                  <span>Swahili</span><span>Native</span>
+                </div>
+                <div class="resume-language">
+                  <span>English</span><span>Conversational</span>
+                </div>
+              </section>
+            </aside>
+          </div>
+          <p class="resume-footer-note">
+            <!-- Add verified professional development or certifications here when available. -->
+            References available upon request.
+          </p>
+        </article>
+      </main>
+
+      <footer class="footer">
+        <a class="brand" href="index.html#home">
+          <span class="brand-mark">E<span>.</span></span>
+          <span>Edgar Charles</span>
+        </a>
+        <p>© <span id="year"></span> Edgar Charles</p>
+        <a class="back-top" href="#">Back to top ↑</a>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const button = document.getElementById("themeToggle");
+      const icon = document.getElementById("themeIcon");
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        icon.textContent = theme === "dark" ? "☼" : "☾";
+        button.setAttribute(
+          "aria-label",
+          theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+        );
+        try {
+          localStorage.setItem("portfolio-theme", theme);
+        } catch (error) {}
+      }
+      setTheme(root.dataset.theme || "dark");
+      button.addEventListener("click", () =>
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark"),
+      );
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
