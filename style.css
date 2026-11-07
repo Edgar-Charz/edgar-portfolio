@@ -86,12 +86,16 @@ button{font:inherit}
 .gradient-text{background:linear-gradient(100deg,var(--blue),var(--blue2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-description{max-width:510px;color:var(--muted);font-size:14px;line-height:1.9;margin:22px 0 27px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.button{display:inline-flex;align-items:center;gap:22px;padding:12px 17px;border-radius:10px;font-size:12px;font-weight:700;transition:transform .2s,background .2s}
-.button:hover{transform:translateY(-2px)}
+.button{display:inline-flex;align-items:center;gap:22px;padding:12px 17px;border:1px solid transparent;border-radius:10px;font-size:12px;font-weight:700;transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease}
+.button:hover{transform:translateY(-3px)}
+.button:focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
 .button-primary{background:var(--blue);color:white;box-shadow:0 8px 24px rgba(79,140,255,.2)}
-.button-primary:hover{background:#3679ef}
-.button-quiet{border:1px solid var(--line);color:var(--text)}
+.button-primary:hover{background:#3679ef;box-shadow:0 12px 28px rgba(79,140,255,.3)}
+.button-quiet{border-color:var(--line);color:var(--text)}
+.button-quiet:hover{border-color:rgba(79,140,255,.42);background:var(--surface2);box-shadow:0 8px 22px rgba(0,0,0,.12)}
 .button span{font-size:16px}
+.button span{transition:transform .2s ease}
+.button:hover span{transform:translate(2px,-2px)}
 .hero-meta{display:flex;gap:24px;margin-top:44px;color:var(--muted);font-size:11px}
 .hero-meta span{display:flex;align-items:center;gap:8px}
 .meta-line{height:1px;width:22px;background:var(--blue)}
@@ -186,6 +190,10 @@ button{font:inherit}
  .hero{grid-template-columns:1fr;padding-top:32px;padding-bottom:70px;gap:10px}
  .hero-visual{order:-1;height:390px;margin-top:0}
  .hero-copy{order:1}
+ .hero-actions{flex-wrap:wrap;justify-content:center;gap:8px}
+ .hero-actions .button{min-width:0;flex:0 0 calc(50% - 4px);justify-content:center;gap:4px;padding:11px 10px;font-size:10px;text-align:center;white-space:nowrap}
+ .hero-actions .button:last-child{margin-inline:auto}
+ .hero-actions .button span{font-size:13px}
  .hero h1{font-size:57px}
  .hero h2{font-size:27px}
  .hero-visual{transform:none}
@@ -223,6 +231,11 @@ button{font:inherit}
  .about-slides{height:clamp(250px,72vw,340px)}
  .photo-caption{padding:27px 17px 15px}
  .photo-caption strong{font-size:15px}
+}
+@media(max-width:360px){
+ .hero-actions{flex-wrap:wrap}
+ .hero-actions .button{flex-basis:100%}
+ .hero-actions .button:last-child{flex-basis:100%}
 }
 
 /* About section layout */
