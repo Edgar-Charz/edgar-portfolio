@@ -64,3 +64,30 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-35% 0px -55% 0px' });
 sections.forEach(section => observer.observe(section));
 document.getElementById('year').textContent = new Date().getFullYear();
+
+const orbitCenter = document.getElementById('orbitCenter');
+if (orbitCenter) {
+  const orbitMessage = document.getElementById('orbitMessage');
+  const orbitSubtitle = document.getElementById('orbitSubtitle');
+  const orbitMessages = [
+    ['Ideas into<br>useful software', 'LEARN · BUILD · IMPROVE', '#42d9ff'],
+    ['From data to solutions', 'DESIGN · DEVELOP · DELIVER', '#a676ff'],
+    ['Building for real people', 'THINK · SOLVE · GROW', '#35d9ce'],
+    ['Turning challenges into code', 'CREATE · TEST · REFINE', '#45dfa3'],
+  ];
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let messageIndex = 0;
+    window.setInterval(() => {
+      if (document.hidden) return;
+      messageIndex = (messageIndex + 1) % orbitMessages.length;
+      const [title, subtitle, color] = orbitMessages[messageIndex];
+      orbitCenter.classList.add('is-changing');
+      window.setTimeout(() => {
+        orbitMessage.innerHTML = title;
+        orbitSubtitle.textContent = subtitle;
+        orbitCenter.style.setProperty('--orbit-accent', color);
+        orbitCenter.classList.remove('is-changing');
+      }, 220);
+    }, 3600);
+  }
+}

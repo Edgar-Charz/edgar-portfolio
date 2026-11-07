@@ -575,3 +575,45 @@ button{font:inherit}
 @media(prefers-reduced-motion:reduce){
  .tech-orbit,.orbit-spark{animation:none}
 }
+
+/* Restored neon orbit design */
+.orbit-stage{position:relative;isolation:isolate;overflow:visible}
+.orbit-stage::before{inset:7%;background:radial-gradient(circle,rgba(0,194,255,.16),rgba(53,44,255,.09) 44%,transparent 72%);box-shadow:inset 0 0 48px rgba(0,178,255,.12),0 0 45px rgba(0,111,255,.16);border-color:rgba(0,174,255,.2)}
+.orbit-stage::after{border-color:rgba(30,138,255,.2);opacity:.7}
+.tech-orbit{border-color:rgba(0,161,255,.78);box-shadow:0 0 7px rgba(0,153,255,.72),0 0 20px rgba(0,115,255,.38),inset 0 0 12px rgba(0,147,255,.16);animation:orbit-ring-glow 4s ease-in-out infinite}
+.tech-orbit-inner{border-color:rgba(116,78,255,.9);box-shadow:0 0 8px rgba(111,76,255,.82),0 0 22px rgba(111,76,255,.42),inset 0 0 12px rgba(99,88,255,.16)}
+.tech-node-track{position:absolute;inset:7%;border-radius:50%;animation:orbit-spin 42s linear infinite}
+.tech-node-track-inner{inset:20%;animation-duration:32s;animation-direction:reverse}
+.tech-node{position:absolute;z-index:3;top:var(--y);left:var(--x);display:flex;width:76px;height:84px;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:7px 4px;border:1px solid color-mix(in srgb,var(--node-color,#48aaff) 85%,white 12%);border-radius:18px;background:linear-gradient(155deg,color-mix(in srgb,var(--node-color,#48aaff) 28%,#101a33),rgba(4,10,25,.96) 76%);box-shadow:0 0 9px color-mix(in srgb,var(--node-color,#48aaff) 70%,transparent),0 0 23px color-mix(in srgb,var(--node-color,#48aaff) 40%,transparent),inset 0 1px 0 rgba(255,255,255,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translate(-50%,-50%);animation:orbit-counter-spin 42s linear infinite}
+.tech-node-track-inner .tech-node{animation-duration:32s;animation-direction:reverse}
+.tech-badge{width:40px;height:40px;flex-basis:40px;border-radius:12px;background:color-mix(in srgb,var(--node-color,#48aaff) 18%,#081329);border-color:color-mix(in srgb,var(--node-color,#48aaff) 65%,white 8%);box-shadow:0 0 12px color-mix(in srgb,var(--node-color,#48aaff) 48%,transparent);font-size:18px}
+.tech-label{padding:1px 0;border:0;background:none;box-shadow:none;color:#f5f8ff;font-size:10px;text-shadow:0 0 9px color-mix(in srgb,var(--node-color,#48aaff) 55%,transparent)}
+.tech-html{--node-color:#ff572e;color:#ff572e}.tech-css{--node-color:#168dff;color:#168dff}.tech-js{--node-color:#ffe342;color:#ffe342}.tech-python{--node-color:#4ca5ff;color:#ffd343}.tech-django{--node-color:#20d89a;color:#20d89a}.tech-php{--node-color:#9b82ff;color:#c7bcff}.tech-flutter{--node-color:#27bfff;color:#27bfff}.tech-mysql{--node-color:#25dcff;color:#25dcff}.tech-github{--node-color:#f3f6ff;color:#f3f6ff}
+.tech-github svg{width:25px;height:25px;fill:currentColor}
+.orbit-center{position:absolute;top:50%;left:50%;width:42%;border-color:color-mix(in srgb,var(--orbit-accent,#4be2ff) 82%,white 10%);background:radial-gradient(circle at 48% 38%,color-mix(in srgb,var(--orbit-accent,#4be2ff) 32%,#07142a),rgba(3,10,24,.97) 76%);box-shadow:0 0 0 8px color-mix(in srgb,var(--orbit-accent,#4be2ff) 12%,transparent),0 0 18px color-mix(in srgb,var(--orbit-accent,#4be2ff) 78%,transparent),0 0 48px color-mix(in srgb,var(--orbit-accent,#4be2ff) 45%,transparent),inset 0 0 30px color-mix(in srgb,var(--orbit-accent,#4be2ff) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.25);transform:translate(-50%,-50%);transition:border-color .45s,box-shadow .45s,background .45s}
+.orbit-center-icon{border-color:color-mix(in srgb,var(--orbit-accent,#4be2ff) 80%,white);background:color-mix(in srgb,var(--orbit-accent,#4be2ff) 22%,transparent);font-size:19px;text-shadow:0 0 14px var(--orbit-accent,#4be2ff);box-shadow:0 0 20px color-mix(in srgb,var(--orbit-accent,#4be2ff) 46%,transparent)}
+.orbit-center strong,.orbit-center small{transition:opacity .22s,transform .22s,color .4s}.orbit-center.is-changing strong,.orbit-center.is-changing small{opacity:0;transform:translateY(3px)}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}@keyframes orbit-counter-spin{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@media(max-width:650px){.tech-node{width:62px;height:74px;padding:5px 3px;border-radius:15px}.tech-badge{width:34px;height:34px;flex-basis:34px;font-size:15px}.tech-label{font-size:8px}.orbit-center{width:44%}}
+@media(prefers-reduced-motion:reduce){.tech-node-track,.tech-node{animation:none}}
+/* Single-ring orbit layout matched to the reference image */
+.orbit-stage{position:relative;isolation:isolate;overflow:visible}
+.orbit-stage::before{inset:7%;background:radial-gradient(circle,rgba(0,194,255,.15),rgba(53,44,255,.08) 44%,transparent 72%);box-shadow:inset 0 0 48px rgba(0,178,255,.12),0 0 45px rgba(0,111,255,.16);border-color:rgba(0,174,255,.2)}
+.orbit-stage::after{border-color:rgba(30,138,255,.2);opacity:.7}
+.tech-orbit{border-color:rgba(0,161,255,.86);box-shadow:0 0 7px rgba(0,153,255,.78),0 0 20px rgba(0,115,255,.4),inset 0 0 12px rgba(0,147,255,.18);animation:orbit-ring-glow 4s ease-in-out infinite}
+.tech-orbit-inner{border-color:rgba(139,72,255,.92);box-shadow:0 0 8px rgba(111,76,255,.9),0 0 22px rgba(111,76,255,.48),inset 0 0 12px rgba(99,88,255,.2)}
+.tech-node-track{position:absolute;inset:7%;border-radius:50%;animation:orbit-spin 54s linear infinite}
+.tech-node{position:absolute;z-index:3;top:var(--y);left:var(--x);display:flex;width:76px;height:84px;align-items:center;justify-content:center;flex-direction:column;gap:3px;padding:6px 4px;border:1px solid color-mix(in srgb,var(--node-color) 88%,white 12%);border-radius:19px;background:linear-gradient(155deg,color-mix(in srgb,var(--node-color) 25%,#101a33),rgba(4,10,25,.96) 76%);box-shadow:0 0 9px color-mix(in srgb,var(--node-color) 76%,transparent),0 0 23px color-mix(in srgb,var(--node-color) 44%,transparent),inset 0 1px 0 rgba(255,255,255,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translate(-50%,-50%);animation:orbit-counter-spin 54s linear infinite}
+.tech-badge{display:grid;width:43px;height:43px;flex:0 0 43px;place-items:center;border:1px solid color-mix(in srgb,var(--node-color) 72%,white 10%);border-radius:12px;background:color-mix(in srgb,var(--node-color) 18%,#081329);box-shadow:0 0 14px color-mix(in srgb,var(--node-color) 56%,transparent);font-size:17px}
+.tech-badge svg{width:34px;height:34px;overflow:visible;fill:currentColor;filter:drop-shadow(0 0 7px color-mix(in srgb,var(--node-color) 55%,transparent))}
+.tech-label{padding:1px 0 0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#f5f8ff;font-size:10px;line-height:1.15;text-shadow:0 0 9px color-mix(in srgb,var(--node-color) 60%,transparent)}
+.tech-js{border-radius:5px;background:#ffe342;color:#302b13;font-size:20px}
+.tech-php svg{width:43px;height:30px}.tech-github svg{width:27px;height:27px}.tech-django{font-size:27px;font-weight:800;letter-spacing:-2px}.tech-html svg,.tech-css svg{width:33px;height:37px}
+.orbit-center{position:absolute;top:50%;left:50%;width:44%;border:2px solid transparent;background:radial-gradient(circle at 48% 38%,color-mix(in srgb,var(--orbit-accent,#4be2ff) 28%,#07142a),rgba(3,10,24,.98) 76%) padding-box,conic-gradient(from 210deg,#08d7ff,#3c78ff,#bd55ff,#08d7ff,#0be2d7) border-box;box-shadow:0 0 0 8px color-mix(in srgb,var(--orbit-accent,#4be2ff) 12%,transparent),0 0 20px color-mix(in srgb,var(--orbit-accent,#4be2ff) 82%,transparent),0 0 52px color-mix(in srgb,var(--orbit-accent,#4be2ff) 46%,transparent),inset 0 0 32px color-mix(in srgb,var(--orbit-accent,#4be2ff) 18%,transparent);transform:translate(-50%,-50%);transition:box-shadow .45s,background .45s}
+.orbit-center-icon{width:52px;height:52px;border:0;background:transparent;color:#08d7ff;font-size:31px;text-shadow:0 0 15px #08d7ff,0 0 28px #08d7ff;box-shadow:none}
+.orbit-center strong{color:#f6f8ff;font-size:clamp(15px,3cqw,21px);line-height:1.15;text-shadow:0 0 10px color-mix(in srgb,var(--orbit-accent,#4be2ff) 38%,transparent)}
+.orbit-center small{font-size:clamp(8px,1.7cqw,11px);letter-spacing:.12em}
+.orbit-center.is-changing strong,.orbit-center.is-changing small{opacity:0;transform:translateY(3px)}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}@keyframes orbit-counter-spin{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@media(max-width:650px){.tech-node{width:62px;height:74px;padding:5px 3px;border-radius:15px}.tech-badge{width:35px;height:35px;flex-basis:35px}.tech-badge svg{width:29px;height:29px}.tech-label{font-size:8px}.orbit-center{width:46%}.orbit-center-icon{width:36px;height:36px;font-size:24px}}
+@media(prefers-reduced-motion:reduce){.tech-node-track,.tech-node{animation:none}}
